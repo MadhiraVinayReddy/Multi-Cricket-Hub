@@ -1,140 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google Tag Manager -->
+<!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-MZFW5QNL');</script>
 <!-- End Google Tag Manager -->
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Checkout – CricketHub</title>
-  <link rel="stylesheet" href="style.css" />
-  <style>
-    .checkout-layout {
-      max-width: 1100px; margin: 0 auto;
-      display: grid; grid-template-columns: 1fr 340px;
-      gap: 32px; padding: 44px 28px; align-items: start;
-    }
-    /* Steps */
-    .steps-bar {
-      display: flex; gap: 0; margin-bottom: 32px;
-    }
-    .step {
-      flex: 1; text-align: center; position: relative;
-    }
-    .step::after {
-      content: '';
-      position: absolute; top: 16px; left: 50%; right: -50%;
-      height: 2px; background: var(--gray-light); z-index: 0;
-    }
-    .step:last-child::after { display: none; }
-    .step-circle {
-      width: 34px; height: 34px;
-      border-radius: 50%;
-      background: var(--gray-light); color: var(--gray);
-      display: flex; align-items: center; justify-content: center;
-      font-weight: 700; font-size: 0.9rem;
-      margin: 0 auto 8px; position: relative; z-index: 1;
-      transition: background .3s, color .3s;
-    }
-    .step.active .step-circle { background: var(--green); color: var(--white); }
-    .step.done .step-circle { background: var(--gold); color: var(--green-dark); }
-    .step-label { font-size: 0.78rem; font-weight: 600; color: var(--gray); }
-    .step.active .step-label { color: var(--green); }
-
-    /* Sections */
-    .checkout-section {
-      background: var(--white); border-radius: var(--radius);
-      box-shadow: var(--shadow); padding: 28px; margin-bottom: 20px;
-    }
-    .checkout-section h2 {
-      font-size: 1.1rem; font-weight: 700; margin-bottom: 20px;
-      display: flex; align-items: center; gap: 10px;
-    }
-    .section-icon { font-size: 1.3rem; }
-
-    /* Payment tabs */
-    .pay-tabs { display: flex; gap: 10px; margin-bottom: 24px; flex-wrap: wrap; }
-    .pay-tab {
-      padding: 10px 18px; border-radius: 8px;
-      border: 2px solid var(--gray-light);
-      background: var(--white); cursor: pointer;
-      font-weight: 600; font-size: 0.9rem;
-      transition: border-color .2s, background .2s;
-    }
-    .pay-tab.active { border-color: var(--green); background: #e9f5ee; color: var(--green); }
-    .pay-content { display: none; }
-    .pay-content.active { display: block; }
-
-    /* UPI logos */
-    .upi-logos { display: flex; gap: 10px; margin-bottom: 14px; flex-wrap: wrap; }
-    .upi-logo {
-      background: var(--off-white); border-radius: 8px;
-      padding: 8px 14px; font-size: 0.82rem; font-weight: 700;
-    }
-    .card-icons { display: flex; gap: 8px; margin-bottom: 14px; }
-    .card-icon {
-      background: var(--off-white); border-radius: 6px;
-      padding: 5px 10px; font-size: 0.78rem; font-weight: 700;
-    }
-    .bank-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
-    .bank-opt {
-      padding: 10px; border-radius: 8px;
-      border: 1.5px solid var(--gray-light);
-      text-align: center; cursor: pointer; font-size: 0.85rem; font-weight: 600;
-      transition: border-color .2s, background .2s;
-    }
-    .bank-opt:hover, .bank-opt.active { border-color: var(--green); background: #e9f5ee; }
-
-    /* Order review */
-    .review-box {
-      background: var(--white); border-radius: var(--radius);
-      box-shadow: var(--shadow); padding: 24px;
-      position: sticky; top: calc(var(--nav-h) + 20px);
-    }
-    .review-item {
-      display: flex; gap: 12px; align-items: center;
-      padding: 12px 0; border-bottom: 1px solid var(--gray-light);
-    }
-    .review-item:last-of-type { border-bottom: none; }
-    .review-emoji { font-size: 1.8rem; }
-    .review-name { font-size: 0.9rem; font-weight: 600; flex: 1; }
-    .review-price { font-family: 'Oswald',sans-serif; color: var(--green); font-weight: 700; }
-    .review-total-row {
-      display: flex; justify-content: space-between;
-      padding: 16px 0 0; font-family: 'Oswald',sans-serif;
-      font-size: 1.3rem; font-weight: 700; color: var(--green);
-    }
-
-    /* Success */
-    .success-screen {
-      display: none;
-      text-align: center; padding: 60px 40px;
-      background: var(--white); border-radius: var(--radius);
-      box-shadow: var(--shadow);
-    }
-    .success-screen.show { display: block; }
-    .success-icon { font-size: 5rem; margin-bottom: 16px; }
-    .success-screen h2 { font-size: 2rem; margin-bottom: 10px; color: var(--green); }
-    .order-id-badge {
-      display: inline-block;
-      background: var(--off-white); border-radius: 8px;
-      padding: 10px 24px; font-family: 'Oswald',sans-serif;
-      font-size: 1.2rem; letter-spacing: .06em; color: var(--green-dark);
-      margin: 16px 0;
-    }
-
-    @media(max-width:800px){
-      .checkout-layout{grid-template-columns:1fr;padding:20px 16px;}
-      .review-box{position:static;}
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Checkout – CricketHub</title>
+<link rel="stylesheet" href="style.css" />
+<style>
+.checkout-layout {
+  max-width: 1100px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 340px;
+  gap: 32px; padding: 44px 28px; align-items: start;
+}
+.steps-bar { display: flex; gap: 0; margin-bottom: 32px; }
+.step { flex: 1; text-align: center; position: relative; }
+.step::after {
+  content: '';
+  position: absolute; top: 16px; left: 50%; right: -50%;
+  height: 2px; background: var(--gray-light); z-index: 0;
+}
+.step:last-child::after { display: none; }
+.step-circle {
+  width: 34px; height: 34px; border-radius: 50%;
+  background: var(--gray-light); color: var(--gray);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 0.9rem;
+  margin: 0 auto 8px; position: relative; z-index: 1;
+  transition: background .3s, color .3s;
+}
+.step.active .step-circle { background: var(--green); color: var(--white); }
+.step.done .step-circle { background: var(--gold); color: var(--green-dark); }
+.step-label { font-size: 0.78rem; font-weight: 600; color: var(--gray); }
+.step.active .step-label { color: var(--green); }
+.checkout-section {
+  background: var(--white); border-radius: var(--radius);
+  box-shadow: var(--shadow); padding: 28px; margin-bottom: 20px;
+}
+.checkout-section h2 {
+  font-size: 1.1rem; font-weight: 700; margin-bottom: 20px;
+  display: flex; align-items: center; gap: 10px;
+}
+.section-icon { font-size: 1.3rem; }
+.pay-tabs { display: flex; gap: 10px; margin-bottom: 24px; flex-wrap: wrap; }
+.pay-tab {
+  padding: 10px 18px; border-radius: 8px;
+  border: 2px solid var(--gray-light);
+  background: var(--white); cursor: pointer;
+  font-weight: 600; font-size: 0.9rem;
+  transition: border-color .2s, background .2s;
+}
+.pay-tab.active { border-color: var(--green); background: #e9f5ee; color: var(--green); }
+.pay-content { display: none; }
+.pay-content.active { display: block; }
+.upi-logos { display: flex; gap: 10px; margin-bottom: 14px; flex-wrap: wrap; }
+.upi-logo { background: var(--off-white); border-radius: 8px; padding: 8px 14px; font-size: 0.82rem; font-weight: 700; }
+.card-icons { display: flex; gap: 8px; margin-bottom: 14px; }
+.card-icon { background: var(--off-white); border-radius: 6px; padding: 5px 10px; font-size: 0.78rem; font-weight: 700; }
+.bank-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.bank-opt {
+  padding: 10px; border-radius: 8px;
+  border: 1.5px solid var(--gray-light);
+  text-align: center; cursor: pointer; font-size: 0.85rem; font-weight: 600;
+  transition: border-color .2s, background .2s;
+}
+.bank-opt:hover, .bank-opt.active { border-color: var(--green); background: #e9f5ee; }
+.review-box {
+  background: var(--white); border-radius: var(--radius);
+  box-shadow: var(--shadow); padding: 24px;
+  position: sticky; top: calc(var(--nav-h) + 20px);
+}
+.review-item {
+  display: flex; gap: 12px; align-items: center;
+  padding: 12px 0; border-bottom: 1px solid var(--gray-light);
+}
+.review-item:last-of-type { border-bottom: none; }
+.review-emoji { font-size: 1.8rem; }
+.review-name { font-size: 0.9rem; font-weight: 600; flex: 1; }
+.review-price { font-family: 'Oswald',sans-serif; color: var(--green); font-weight: 700; }
+.review-total-row {
+  display: flex; justify-content: space-between;
+  padding: 16px 0 0; font-family: 'Oswald',sans-serif;
+  font-size: 1.3rem; font-weight: 700; color: var(--green);
+}
+@media(max-width:800px){
+  .checkout-layout{grid-template-columns:1fr;padding:20px 16px;}
+  .review-box{position:static;}
+}
+</style>
 </head>
 <body>
-  <!-- Google Tag Manager (noscript) -->
+<!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MZFW5QNL"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
@@ -162,29 +123,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <div class="checkout-layout" id="checkout-main">
   <div>
-    <!-- Steps -->
     <div class="steps-bar">
       <div class="step active" id="step1"><div class="step-circle">1</div><div class="step-label">Information</div></div>
       <div class="step" id="step2"><div class="step-circle">2</div><div class="step-label">Shipping</div></div>
       <div class="step" id="step3"><div class="step-circle">3</div><div class="step-label">Payment</div></div>
     </div>
 
-    <!-- Success screen -->
-    <div class="success-screen" id="success-screen">
-      <div class="success-icon">✅</div>
-      <h2>Order Confirmed!</h2>
-      <p>Thank you for shopping at CricketHub! Your order is being processed.</p>
-      <div class="order-id-badge" id="order-id-display"></div>
-      <p style="color:var(--gray);margin-bottom:24px;">A confirmation will be sent to your email.</p>
-      <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
-        <a href="index.html" class="btn btn-green">Continue Shopping</a>
-        <a href="products.html" class="btn btn-outline" style="color:var(--dark);border-color:var(--gray-light);">Browse Products</a>
-      </div>
-    </div>
-
-    <!-- Form area -->
     <div id="form-area">
-      <!-- Shipping Info -->
       <div class="checkout-section">
         <h2><span class="section-icon">📦</span> Shipping Information</h2>
         <div class="form-row">
@@ -220,7 +165,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
 
-      <!-- Payment -->
       <div class="checkout-section">
         <h2><span class="section-icon">💳</span> Payment Details</h2>
         <div class="pay-tabs">
@@ -229,8 +173,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <button class="pay-tab" onclick="setPayTab('netbank',this)">🏦 Net Banking</button>
           <button class="pay-tab" onclick="setPayTab('cod',this)">💵 COD</button>
         </div>
-
-        <!-- Card -->
         <div class="pay-content active" id="pay-card">
           <div class="card-icons">
             <span class="card-icon">VISA</span><span class="card-icon">MC</span>
@@ -243,8 +185,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </div>
           <div class="form-group"><label>Name on Card</label><input type="text" placeholder="VIRAT KOHLI" /></div>
         </div>
-
-        <!-- UPI -->
         <div class="pay-content" id="pay-upi">
           <div class="upi-logos">
             <span class="upi-logo">GPay</span><span class="upi-logo">PhonePe</span>
@@ -252,8 +192,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </div>
           <div class="form-group"><label>UPI ID</label><input type="text" placeholder="yourname@upi" /></div>
         </div>
-
-        <!-- Net Banking -->
         <div class="pay-content" id="pay-netbank">
           <div class="bank-grid" id="bank-grid">
             <div class="bank-opt" onclick="selBank(this)">SBI</div>
@@ -264,8 +202,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <div class="bank-opt" onclick="selBank(this)">Other</div>
           </div>
         </div>
-
-        <!-- COD -->
         <div class="pay-content" id="pay-cod">
           <div style="background:var(--off-white);border-radius:10px;padding:20px;text-align:center;">
             <div style="font-size:2.5rem;margin-bottom:10px;">💵</div>
@@ -282,7 +218,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </div>
 
-  <!-- Order Review -->
   <aside class="review-box" id="order-review">
     <h2 style="font-size:1.1rem;margin-bottom:16px;">Order Review</h2>
     <div id="review-items"></div>
@@ -321,7 +256,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     let v = el.value.replace(/\D/g,'').substring(0,16);
     el.value = v.replace(/(.{4})/g,'$1 ').trim();
   }
-
   function renderReview() {
     const items = Cart.get();
     const ri = document.getElementById('review-items');
@@ -349,17 +283,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     });
     if (!ok) { alert('Please fill in all required fields.'); return; }
 
-    // Clear cart & show success
-    const orderId = 'CH-' + Date.now().toString().slice(-8).toUpperCase();
+    const orderId  = 'CH-' + Date.now().toString().slice(-8).toUpperCase();
+    const total    = Cart.total();
+    const items    = Cart.get().map(i => i.name).join(', ');
+    const payTab   = document.querySelector('.pay-tab.active');
+    const payment  = payTab ? payTab.textContent.trim() : '';
+
+    // Clear cart
     localStorage.removeItem('crickethub_cart');
     Cart.updateBadge();
-    document.getElementById('form-area').style.display = 'none';
-    document.getElementById('order-review').style.display = 'none';
-    document.getElementById('success-screen').classList.add('show');
-    document.getElementById('order-id-display').textContent = 'Order ID: ' + orderId;
-    document.querySelector('.steps-bar').querySelectorAll('.step').forEach((s,i) => {
-      s.classList.remove('active'); s.classList.add('done');
+
+    // Redirect to thankyou.html with order data for GTM
+    const params = new URLSearchParams({
+      order_id : orderId,
+      total    : total,
+      items    : items,
+      payment  : payment
     });
+    window.location.href = 'thankyou.html?' + params.toString();
   }
 
   document.addEventListener('DOMContentLoaded', renderReview);
