@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cart – CricketHub</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .cart-layout {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 340px;
+      gap: 32px; padding: 44px 28px;
+      align-items: start;
+    }
+    .cart-items-box {
+      background: var(--white); border-radius: var(--radius);
+      box-shadow: var(--shadow); overflow: hidden;
+    }
+    .cart-item {
+      display: flex; align-items: center; gap: 18px;
+      padding: 22px 24px;
+      border-bottom: 1px solid var(--gray-light);
+      transition: background .15s;
+    }
+    .cart-item:hover { background: var(--off-white); }
+    .cart-item:last-child { border-bottom: none; }
+    .item-emoji {
+      font-size: 2.8rem; min-width: 60px; text-align: center;
+      background: linear-gradient(135deg,#e9f5ee,#c8e6d4);
+      border-radius: 10px; padding: 8px;
+    }
+    .item-info { flex: 1; }
+    .item-info h3 { font-size: 1rem; margin-bottom: 4px; }
+    .item-badge {
+      display: inline-block;
+      background: var(--green); color: var(--white);
+      font-size: 0.7rem; font-weight: 700;
+      padding: 2px 8px; border-radius: 50px;
+      margin-bottom: 6px;
+    }
+    .item-price { font-family: 'Oswald',sans-serif; color: var(--green); font-size: 1.1rem; font-weight: 700; }
+    .qty-controls {
+      display: flex; align-items: center; gap: 10px;
+    }
+    .qty-btn {
+      width: 32px; height: 32px;
+      border-radius: 50%; border: 2px solid var(--gray-light);
+      background: var(--white); cursor: pointer;
+      font-size: 1.1rem; font-weight: 700; color: var(--dark);
+      display: flex; align-items: center; justify-content: center;
+      transition: background .15s, border-color .15s;
+    }
+    .qty-btn:hover { background: var(--green); color: var(--white); border-color: var(--green); }
+    .qty-num { font-weight: 700; font-size: 1rem; min-width: 24px; text-align: center; }
+    .remove-btn {
+      background: none; border: none; cursor: pointer;
+      color: #e53e3e; font-size: 1.2rem; padding: 4px;
+      border-radius: 6px; transition: background .15s;
+    }
+    .remove-btn:hover { background: #fff5f5; }
+
+    /* Summary */
+    .summary-box {
+      background: var(--white); border-radius: var(--radius);
+      box-shadow: var(--shadow); padding: 28px;
+      position: sticky; top: calc(var(--nav-h) + 20px);
+    }
+    .summary-box h2 { font-size: 1.3rem; margin-bottom: 20px; }
+    .summary-row {
+      display: flex; justify-content: space-between;
+      padding: 10px 0; border-bottom: 1px solid var(--gray-light);
+      font-size: 0.95rem;
+    }
+    .summary-row:last-of-type { border-bottom: none; }
+    .summary-total {
+      display: flex; justify-content: space-between;
+      padding: 16px 0 20px;
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.4rem; font-weight: 700; color: var(--green);
+    }
+    .coupon-row {
+      display: flex; gap: 10px; margin-bottom: 20px;
+    }
+    .coupon-row input {
+      flex: 1; padding: 10px 14px;
+      border: 1.5px solid var(--gray-light);
+      border-radius: 8px; font-family: 'Nunito', sans-serif;
+    }
+    .coupon-row input:focus { outline: none; border-color: var(--green); }
+    .coupon-row button {
+      padding: 10px 16px;
+      background: var(--green-dark); color: var(--white);
+      border: none; border-radius: 8px;
+      font-weight: 700; cursor: pointer;
+    }
+    .secure-note { font-size: 0.8rem; color: var(--gray); text-align: center; margin-top: 12px; }
+
+    .empty-cart {
+      text-align: center; padding: 80px 20px;
+    }
+    .empty-cart span { font-size: 4rem; display: block; margin-bottom: 16px; }
+    .empty-cart h2 { margin-bottom: 10px; }
+    .empty-cart p { color: var(--gray); margin-bottom: 24px; }
+
+    .savings-badge {
+      background: #e9f5ee; color: var(--green);
+      border-radius: 8px; padding: 10px 16px;
+      font-weight: 700; font-size: 0.9rem;
+      margin-bottom: 18px; display: flex; align-items: center; gap: 8px;
+    }
+
+    @media(max-width:800px){
+      .cart-layout{grid-template-columns:1fr;padding:20px 16px;}
+      .summary-box{position:static;}
+    }
+  </style>
+</head>
+<body>
+
+<div class="ticker">
+  <span class="ticker-inner">
+    🏆 Use code <strong>IPL2026</strong> for 20% off &nbsp;|&nbsp;
+    🚚 Free shipping on orders over ₹999 &nbsp;|&nbsp;
+    🔒 Secure SSL Checkout
+  </span>
+</div>
+
+<nav>
+  <div class="nav-logo">🏏 Cricket<span>Hub</span></div>
+  <a href="index.html">Home</a>
+  <a href="products.html">Products</a>
+  <a href="contact.html">Contact</a>
+  <a href="cart.html" class="nav-cart">🛒 Cart <span class="cart-count">0</span></a>
+</nav>
+
+<div class="page-header">
+  <div class="breadcrumb"><a href="index.html">Home</a> / Cart</div>
+  <h1>Shopping Cart</h1>
+  <p>Review your items before checkout.</p>
+</div>
+
+<div class="cart-layout">
+  <div>
+    <div class="cart-items-box" id="cart-items-box">
+      <!-- rendered by JS -->
+    </div>
+  </div>
+
+  <aside class="summary-box" id="summary-box">
+    <h2>Order Summary</h2>
+    <div id="savings-badge" class="savings-badge" style="display:none;">🎉 You're saving <span id="savings-amount"></span>!</div>
+    <div class="coupon-row">
+      <input type="text" placeholder="Promo code" id="coupon-input" />
+      <button onclick="applyCoupon()">Apply</button>
+    </div>
+    <div id="coupon-msg" style="font-size:.85rem;margin-bottom:12px;min-height:18px;"></div>
+    <div class="summary-row"><span>Subtotal</span><span id="subtotal">₹0</span></div>
+    <div class="summary-row"><span>Delivery</span><span id="delivery">Free</span></div>
+    <div class="summary-row"><span>Discount</span><span id="discount" style="color:#22913f;">-₹0</span></div>
+    <div class="summary-total"><span>Total</span><span id="total">₹0</span></div>
+    <a href="checkout.html" class="btn btn-primary" style="width:100%;justify-content:center;" id="checkout-btn">
+      Proceed to Checkout →
+    </a>
+    <p class="secure-note">🔒 Secure SSL Checkout · 100% Safe</p>
+  </aside>
+</div>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <h3>Cricket<span>Hub</span></h3>
+      <p>India's premier cricket equipment store.</p>
+    </div>
+    <div>
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div><h4>Support</h4><ul><li><a href="contact.html">Shipping Policy</a></li><li><a href="contact.html">Return Policy</a></li></ul></div>
+    <div></div>
+  </div>
+  <div class="footer-bottom">© 2026 CricketHub. All Rights Reserved.</div>
+</footer>
+
+<script src="cart.js"></script>
+<script>
+  let discount = 0;
+
+  function applyCoupon() {
+    const code = document.getElementById('coupon-input').value.trim().toUpperCase();
+    const msg = document.getElementById('coupon-msg');
+    const subtotal = Cart.total();
+    if (code === 'IPL2026') {
+      discount = Math.round(subtotal * 0.2);
+      msg.style.color = 'var(--green)';
+      msg.textContent = '✓ IPL2026 applied — 20% off!';
+    } else if (code === 'FREE999') {
+      discount = 0; // free shipping handled separately
+      msg.style.color = 'var(--green)';
+      msg.textContent = '✓ Free shipping applied!';
+    } else {
+      discount = 0;
+      msg.style.color = '#e53e3e';
+      msg.textContent = '✗ Invalid coupon code.';
+    }
+    renderSummary();
+  }
+
+  function renderSummary() {
+    const subtotal = Cart.total();
+    const delivery = subtotal >= 999 ? 0 : 99;
+    const total = subtotal - discount + delivery;
+    document.getElementById('subtotal').textContent = '₹' + subtotal.toLocaleString();
+    document.getElementById('delivery').textContent = delivery === 0 ? 'Free 🚚' : '₹' + delivery;
+    document.getElementById('discount').textContent = '-₹' + discount.toLocaleString();
+    document.getElementById('total').textContent = '₹' + Math.max(total, 0).toLocaleString();
+    const items = Cart.get();
+    const totalOld = items.reduce((s, i) => s + i.oldPrice * i.qty, 0);
+    const savings = totalOld - subtotal + discount;
+    const sb = document.getElementById('savings-badge');
+    if (savings > 0 && items.length) {
+      sb.style.display = 'flex';
+      document.getElementById('savings-amount').textContent = '₹' + savings.toLocaleString();
+    } else sb.style.display = 'none';
+  }
+
+  function renderCart() {
+    const items = Cart.get();
+    const box = document.getElementById('cart-items-box');
+    if (!items.length) {
+      box.innerHTML = `
+        <div class="empty-cart">
+          <span>🛒</span>
+          <h2>Your cart is empty</h2>
+          <p>Looks like you haven't added anything yet.</p>
+          <a href="products.html" class="btn btn-primary">Shop Now →</a>
+        </div>`;
+      document.getElementById('checkout-btn').style.pointerEvents = 'none';
+      document.getElementById('checkout-btn').style.opacity = '.5';
+    } else {
+      document.getElementById('checkout-btn').style.pointerEvents = '';
+      document.getElementById('checkout-btn').style.opacity = '';
+      box.innerHTML = items.map(item => `
+        <div class="cart-item" id="ci-${item.id}">
+          <div class="item-emoji">${item.emoji}</div>
+          <div class="item-info">
+            <span class="item-badge">${item.category}</span>
+            <h3>${item.name}</h3>
+            <div class="item-price">₹${item.price.toLocaleString()} <span style="font-size:.85rem;color:var(--gray);text-decoration:line-through;font-family:'Nunito',sans-serif;">₹${item.oldPrice.toLocaleString()}</span></div>
+          </div>
+          <div class="qty-controls">
+            <button class="qty-btn" onclick="changeQty(${item.id}, ${item.qty - 1})">−</button>
+            <span class="qty-num">${item.qty}</span>
+            <button class="qty-btn" onclick="changeQty(${item.id}, ${item.qty + 1})">+</button>
+          </div>
+          <button class="remove-btn" onclick="removeItem(${item.id})" title="Remove">🗑️</button>
+        </div>`).join('');
+    }
+    renderSummary();
+  }
+
+  function changeQty(id, qty) {
+    if (qty < 1) { removeItem(id); return; }
+    Cart.updateQty(id, qty);
+    renderCart();
+  }
+  function removeItem(id) {
+    Cart.remove(id);
+    renderCart();
+  }
+
+  document.addEventListener('DOMContentLoaded', renderCart);
+</script>
+</body>
+</html>

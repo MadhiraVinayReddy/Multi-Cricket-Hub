@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Products – CricketHub</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .products-layout {
+      max-width: 1140px; margin: 0 auto;
+      display: grid; grid-template-columns: 240px 1fr;
+      gap: 32px; padding: 44px 28px;
+    }
+    /* Sidebar */
+    .sidebar { position: sticky; top: calc(var(--nav-h) + 20px); align-self: start; }
+    .filter-box {
+      background: var(--white); border-radius: var(--radius);
+      box-shadow: var(--shadow); padding: 24px; margin-bottom: 20px;
+    }
+    .filter-box h3 {
+      font-size: 0.8rem; font-weight: 700; letter-spacing: .1em;
+      color: var(--gray); text-transform: uppercase; margin-bottom: 16px;
+    }
+    .filter-option {
+      display: flex; align-items: center; gap: 10px;
+      padding: 9px 12px; border-radius: 8px;
+      cursor: pointer; transition: background .18s;
+      font-weight: 600; font-size: 0.93rem;
+    }
+    .filter-option:hover { background: var(--off-white); }
+    .filter-option.active { background: #e9f5ee; color: var(--green); }
+    .filter-option .filter-count {
+      margin-left: auto; font-size: 0.78rem;
+      background: var(--gray-light); border-radius: 50px;
+      padding: 1px 8px; color: var(--gray);
+    }
+    .price-slider { width: 100%; margin-top: 8px; accent-color: var(--green); }
+    .price-labels { display: flex; justify-content: space-between; font-size: 0.85rem; color: var(--gray); margin-top: 4px; }
+
+    /* Main */
+    .products-toolbar {
+      display: flex; align-items: center; gap: 16px;
+      margin-bottom: 24px; flex-wrap: wrap;
+    }
+    .products-count { color: var(--gray); font-size: 0.9rem; margin-right: auto; }
+    .sort-select {
+      padding: 9px 16px; border-radius: 8px;
+      border: 1.5px solid var(--gray-light);
+      font-family: 'Nunito', sans-serif; font-size: 0.9rem;
+      background: var(--white); cursor: pointer;
+    }
+    .search-input {
+      padding: 9px 16px; border-radius: 8px;
+      border: 1.5px solid var(--gray-light);
+      font-family: 'Nunito', sans-serif; font-size: 0.9rem;
+      width: 200px; transition: border-color .2s;
+    }
+    .search-input:focus { outline: none; border-color: var(--green); }
+    .products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .no-results {
+      grid-column: 1/-1; text-align: center; padding: 60px 20px;
+      color: var(--gray);
+    }
+    .no-results span { font-size: 3rem; display: block; margin-bottom: 12px; }
+
+    @media(max-width:900px){
+      .products-layout{grid-template-columns:1fr; padding:24px 16px;}
+      .sidebar{position:static;}
+      .products-grid{grid-template-columns:repeat(2,1fr);}
+    }
+    @media(max-width:500px){
+      .products-grid{grid-template-columns:1fr;}
+    }
+  </style>
+</head>
+<body>
+
+<div class="ticker">
+  <span class="ticker-inner">
+    🏆 Use code <strong>IPL2026</strong> for 20% off on all IPL Jerseys &nbsp;|&nbsp;
+    🚚 Free shipping on orders over ₹999 &nbsp;|&nbsp;
+    ⚡ New Stock: SG Savage Edition, Kookaburra Turf Ball
+  </span>
+</div>
+
+<nav>
+  <div class="nav-logo">🏏 Cricket<span>Hub</span></div>
+  <a href="index.html">Home</a>
+  <a href="products.html">Products</a>
+  <a href="contact.html">Contact</a>
+  <a href="cart.html" class="nav-cart">🛒 Cart <span class="cart-count">0</span></a>
+</nav>
+
+<div class="page-header">
+  <div class="breadcrumb"><a href="index.html">Home</a> / Products</div>
+  <h1>Our Products</h1>
+  <p>Official gear, bats, balls, and jerseys — everything for the cricketer in you.</p>
+</div>
+
+<div class="products-layout">
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="filter-box">
+      <h3>Categories</h3>
+      <div class="filter-option active" data-filter="all" onclick="setFilter('all', this)">
+        All Products <span class="filter-count">22</span>
+      </div>
+      <div class="filter-option" data-filter="bats" onclick="setFilter('bats', this)">
+        🏏 Bats <span class="filter-count">4</span>
+      </div>
+      <div class="filter-option" data-filter="balls" onclick="setFilter('balls', this)">
+        🎾 Balls <span class="filter-count">4</span>
+      </div>
+      <div class="filter-option" data-filter="jerseys" onclick="setFilter('jerseys', this)">
+        👕 IPL Jerseys <span class="filter-count">6</span>
+      </div>
+      <div class="filter-option" data-filter="international" onclick="setFilter('international', this)">
+        🌍 International <span class="filter-count">4</span>
+      </div>
+      <div class="filter-option" data-filter="gear" onclick="setFilter('gear', this)">
+        🧤 Gear <span class="filter-count">4</span>
+      </div>
+    </div>
+    <div class="filter-box">
+      <h3>Price Range</h3>
+      <input type="range" class="price-slider" id="price-range" min="100" max="7000" value="7000" step="100"
+        oninput="setPriceFilter(this.value)" />
+      <div class="price-labels">
+        <span>₹100</span>
+        <span id="price-label">Up to ₹7000</span>
+      </div>
+    </div>
+    <div class="filter-box">
+      <h3>Rating</h3>
+      <div class="filter-option active" id="rating-all" onclick="setRating(0, this)">All Ratings</div>
+      <div class="filter-option" onclick="setRating(4.5, this)">⭐ 4.5 & above</div>
+      <div class="filter-option" onclick="setRating(4, this)">⭐ 4.0 & above</div>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main>
+    <div class="products-toolbar">
+      <span class="products-count" id="products-count">Showing 22 products</span>
+      <input type="text" class="search-input" placeholder="🔍 Search..." oninput="setSearch(this.value)" />
+      <select class="sort-select" onchange="setSort(this.value)">
+        <option value="featured">Featured</option>
+        <option value="price-asc">Price: Low to High</option>
+        <option value="price-desc">Price: High to Low</option>
+        <option value="rating">Top Rated</option>
+      </select>
+    </div>
+    <div class="products-grid" id="products-grid"></div>
+  </main>
+</div>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <h3>Cricket<span>Hub</span></h3>
+      <p>India's premier cricket equipment store. From leather balls to official IPL jerseys — we've got your game covered.</p>
+    </div>
+    <div>
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="cart.html">My Cart</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Categories</h4>
+      <ul>
+        <li><a href="products.html?cat=bats">Cricket Bats</a></li>
+        <li><a href="products.html?cat=balls">Cricket Balls</a></li>
+        <li><a href="products.html?cat=jerseys">IPL Jerseys</a></li>
+        <li><a href="products.html?cat=international">International</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Support</h4>
+      <ul>
+        <li><a href="contact.html">Shipping Policy</a></li>
+        <li><a href="contact.html">Return Policy</a></li>
+        <li><a href="contact.html">Size Guide</a></li>
+        <li><a href="contact.html">FAQ</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2026 CricketHub. All Rights Reserved. &nbsp;|&nbsp; 🔒 Secure Payments &nbsp;·&nbsp; 🚚 Pan-India Delivery</div>
+</footer>
+
+<script src="cart.js"></script>
+<script src="products-data.js"></script>
+<script>
+  let activeFilter = 'all';
+  let maxPrice = 7000;
+  let minRating = 0;
+  let searchTerm = '';
+  let sortMode = 'featured';
+
+  function setFilter(f, el) {
+    activeFilter = f;
+    document.querySelectorAll('.filter-option[data-filter]').forEach(e => e.classList.remove('active'));
+    el.classList.add('active');
+    renderProducts();
+  }
+  function setPriceFilter(v) {
+    maxPrice = parseInt(v);
+    document.getElementById('price-label').textContent = `Up to ₹${parseInt(v).toLocaleString()}`;
+    renderProducts();
+  }
+  function setRating(r, el) {
+    minRating = r;
+    document.querySelectorAll('.filter-box:nth-child(3) .filter-option').forEach(e => e.classList.remove('active'));
+    el.classList.add('active');
+    renderProducts();
+  }
+  function setSearch(v) { searchTerm = v.toLowerCase(); renderProducts(); }
+  function setSort(v) { sortMode = v; renderProducts(); }
+
+  function renderProducts() {
+    let list = PRODUCTS.filter(p => {
+      if (activeFilter !== 'all' && !p.tags.includes(activeFilter)) return false;
+      if (p.price > maxPrice) return false;
+      if (p.rating < minRating) return false;
+      if (searchTerm && !p.name.toLowerCase().includes(searchTerm) && !p.category.toLowerCase().includes(searchTerm)) return false;
+      return true;
+    });
+    if (sortMode === 'price-asc') list.sort((a, b) => a.price - b.price);
+    if (sortMode === 'price-desc') list.sort((a, b) => b.price - a.price);
+    if (sortMode === 'rating') list.sort((a, b) => b.rating - a.rating);
+
+    const grid = document.getElementById('products-grid');
+    document.getElementById('products-count').textContent = `Showing ${list.length} product${list.length !== 1 ? 's' : ''}`;
+    if (!list.length) {
+      grid.innerHTML = `<div class="no-results"><span>🏏</span>No products found. Try adjusting your filters.</div>`;
+      return;
+    }
+    grid.innerHTML = list.map(p => `
+      <div class="product-card">
+        <div class="card-img-placeholder">${p.emoji}</div>
+        <div class="product-card-body">
+          <span class="product-badge">${p.category}</span>
+          <h3>${p.name}</h3>
+          <div class="stars">★★★★${p.rating >= 4.5 ? '★' : '☆'} <span style="color:var(--gray);font-size:.8rem;">(${p.reviews})</span></div>
+          <div class="product-price">₹${p.price.toLocaleString()} <span class="old-price">₹${p.oldPrice.toLocaleString()}</span></div>
+        </div>
+        <div class="product-card-footer">
+          <button class="add-to-cart" onclick='Cart.add(${JSON.stringify(p).replace(/'/g,"&#39;")})'>Add to Cart</button>
+        </div>
+      </div>`).join('');
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    // Check URL param for pre-filter
+    const params = new URLSearchParams(location.search);
+    const cat = params.get('cat');
+    if (cat) {
+      const el = document.querySelector(`.filter-option[data-filter="${cat}"]`);
+      if (el) { setFilter(cat, el); return; }
+    }
+    renderProducts();
+  });
+</script>
+</body>
+</html>
