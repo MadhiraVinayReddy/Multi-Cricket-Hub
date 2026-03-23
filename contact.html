@@ -1,110 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google Tag Manager -->
+<!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-MZFW5QNL');</script>
 <!-- End Google Tag Manager -->
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact – CricketHub</title>
-  <link rel="stylesheet" href="style.css" />
-  <style>
-    .contact-layout {
-      max-width: 1100px; margin: 0 auto;
-      display: grid; grid-template-columns: 360px 1fr;
-      gap: 36px; padding: 52px 28px;
-      align-items: start;
-    }
-    /* Info sidebar */
-    .contact-info { display: flex; flex-direction: column; gap: 20px; }
-    .info-card {
-      background: var(--white); border-radius: var(--radius);
-      box-shadow: var(--shadow); padding: 24px;
-      display: flex; gap: 18px; align-items: flex-start;
-      transition: transform .2s;
-    }
-    .info-card:hover { transform: translateY(-3px); }
-    .info-icon {
-      font-size: 1.8rem;
-      background: linear-gradient(135deg, #e9f5ee, #c8e6d4);
-      border-radius: 12px; padding: 12px;
-      min-width: 54px; text-align: center;
-    }
-    .info-text h3 { font-size: 1rem; margin-bottom: 5px; }
-    .info-text p, .info-text a { font-size: 0.9rem; color: var(--gray); line-height: 1.6; }
-    .info-text a { color: var(--green); font-weight: 600; }
-    .info-text a:hover { text-decoration: underline; }
-
-    /* Map placeholder */
-    .map-card {
-      background: linear-gradient(135deg, #e9f5ee 0%, #c8e6d4 100%);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 32px; text-align: center;
-      min-height: 180px; display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-    }
-    .map-card span { font-size: 3rem; margin-bottom: 10px; }
-    .map-card p { font-size: 0.9rem; color: var(--green-dark); font-weight: 600; }
-
-    /* Form */
-    .contact-form-box {
-      background: var(--white); border-radius: var(--radius);
-      box-shadow: var(--shadow); padding: 36px;
-    }
-    .contact-form-box h2 { font-size: 1.5rem; margin-bottom: 6px; }
-    .contact-form-box p { color: var(--gray); margin-bottom: 28px; font-size: 0.95rem; }
-    .submit-btn {
-      width: 100%; padding: 15px;
-      background: var(--green);
-      color: var(--white); border: none; border-radius: 50px;
-      font-family: 'Oswald', sans-serif;
-      font-size: 1.05rem; font-weight: 600; letter-spacing: .05em;
-      cursor: pointer; transition: background .2s, transform .15s;
-    }
-    .submit-btn:hover { background: var(--green-light); transform: translateY(-2px); }
-
-    /* Success */
-    .form-success {
-      display: none; text-align: center; padding: 40px 20px;
-    }
-    .form-success.show { display: block; }
-    .form-success span { font-size: 3.5rem; display: block; margin-bottom: 14px; }
-    .form-success h3 { font-size: 1.5rem; margin-bottom: 8px; color: var(--green); }
-
-    /* FAQ */
-    .faq-section { max-width: 1100px; margin: 0 auto 60px; padding: 0 28px; }
-    .faq-item {
-      background: var(--white); border-radius: var(--radius);
-      box-shadow: var(--shadow); margin-bottom: 12px; overflow: hidden;
-    }
-    .faq-q {
-      padding: 18px 24px; cursor: pointer;
-      font-weight: 700; font-size: 1rem;
-      display: flex; justify-content: space-between; align-items: center;
-      transition: background .15s;
-    }
-    .faq-q:hover { background: var(--off-white); }
-    .faq-q .arrow { transition: transform .3s; color: var(--green); font-size: 1.2rem; }
-    .faq-item.open .faq-q .arrow { transform: rotate(180deg); }
-    .faq-a {
-      max-height: 0; overflow: hidden;
-      transition: max-height .35s ease, padding .3s;
-      padding: 0 24px; color: var(--gray); font-size: 0.93rem; line-height: 1.7;
-    }
-    .faq-item.open .faq-a { max-height: 200px; padding: 0 24px 18px; }
-
-    @media(max-width:800px){
-      .contact-layout{grid-template-columns:1fr;padding:24px 16px;}
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Contact – CricketHub</title>
+<link rel="stylesheet" href="style.css" />
+<style>
+.contact-layout {
+  max-width: 1100px; margin: 0 auto;
+  display: grid; grid-template-columns: 360px 1fr;
+  gap: 36px; padding: 52px 28px;
+  align-items: start;
+}
+.contact-info { display: flex; flex-direction: column; gap: 20px; }
+.info-card {
+  background: var(--white); border-radius: var(--radius);
+  box-shadow: var(--shadow); padding: 24px;
+  display: flex; gap: 18px; align-items: flex-start;
+  transition: transform .2s;
+}
+.info-card:hover { transform: translateY(-3px); }
+.info-icon {
+  font-size: 1.8rem;
+  background: linear-gradient(135deg, #e9f5ee, #c8e6d4);
+  border-radius: 12px; padding: 12px;
+  min-width: 54px; text-align: center;
+}
+.info-text h3 { font-size: 1rem; margin-bottom: 5px; }
+.info-text p, .info-text a { font-size: 0.9rem; color: var(--gray); line-height: 1.6; }
+.info-text a { color: var(--green); font-weight: 600; }
+.info-text a:hover { text-decoration: underline; }
+.map-card {
+  background: linear-gradient(135deg, #e9f5ee 0%, #c8e6d4 100%);
+  border-radius: var(--radius); box-shadow: var(--shadow);
+  padding: 32px; text-align: center;
+  min-height: 180px; display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+}
+.map-card span { font-size: 3rem; margin-bottom: 10px; }
+.map-card p { font-size: 0.9rem; color: var(--green-dark); font-weight: 600; }
+.contact-form-box {
+  background: var(--white); border-radius: var(--radius);
+  box-shadow: var(--shadow); padding: 36px;
+}
+.contact-form-box h2 { font-size: 1.5rem; margin-bottom: 6px; }
+.contact-form-box p { color: var(--gray); margin-bottom: 28px; font-size: 0.95rem; }
+.submit-btn {
+  width: 100%; padding: 15px;
+  background: var(--green); color: var(--white);
+  border: none; border-radius: 50px;
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.05rem; font-weight: 600; letter-spacing: .05em;
+  cursor: pointer; transition: background .2s, transform .15s;
+}
+.submit-btn:hover { background: var(--green-light); transform: translateY(-2px); }
+.form-success { display: none; text-align: center; padding: 40px 20px; }
+.form-success.show { display: block; }
+.form-success span { font-size: 3.5rem; display: block; margin-bottom: 14px; }
+.form-success h3 { font-size: 1.5rem; margin-bottom: 8px; color: var(--green); }
+.faq-section { max-width: 1100px; margin: 0 auto 60px; padding: 0 28px; }
+.faq-item {
+  background: var(--white); border-radius: var(--radius);
+  box-shadow: var(--shadow); margin-bottom: 12px; overflow: hidden;
+}
+.faq-q {
+  padding: 18px 24px; cursor: pointer;
+  font-weight: 700; font-size: 1rem;
+  display: flex; justify-content: space-between; align-items: center;
+  transition: background .15s;
+}
+.faq-q:hover { background: var(--off-white); }
+.faq-q .arrow { transition: transform .3s; color: var(--green); font-size: 1.2rem; }
+.faq-item.open .faq-q .arrow { transform: rotate(180deg); }
+.faq-a {
+  max-height: 0; overflow: hidden;
+  transition: max-height .35s ease, padding .3s;
+  padding: 0 24px; color: var(--gray); font-size: 0.93rem; line-height: 1.7;
+}
+.faq-item.open .faq-a { max-height: 200px; padding: 0 24px 18px; }
+@media(max-width:800px){
+  .contact-layout{grid-template-columns:1fr;padding:24px 16px;}
+}
+</style>
 </head>
 <body>
-  <!-- Google Tag Manager (noscript) -->
+
+<!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MZFW5QNL"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
@@ -131,7 +119,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 
 <div class="contact-layout">
-  <!-- LEFT: Info -->
+
   <div class="contact-info">
     <div class="info-card">
       <div class="info-icon">📍</div>
@@ -170,7 +158,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </div>
 
-  <!-- RIGHT: Form -->
   <div class="contact-form-box">
     <h2>Send a Message</h2>
     <p>Have a question? Fill out the form and our cricket experts will get back to you.</p>
@@ -205,6 +192,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <button onclick="resetForm()" class="btn btn-green" style="margin-top:20px;">Send Another Message</button>
     </div>
   </div>
+
 </div>
 
 <!-- FAQ -->
@@ -274,16 +262,32 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <script src="cart.js"></script>
 <script>
   function submitForm() {
-    const fname = document.getElementById('cf-fname').value.trim();
-    const email = document.getElementById('cf-email').value.trim();
-    const msg = document.getElementById('cf-message').value.trim();
+    const fname   = document.getElementById('cf-fname').value.trim();
+    const email   = document.getElementById('cf-email').value.trim();
+    const msg     = document.getElementById('cf-message').value.trim();
+    const subject = document.getElementById('cf-subject').value;
+
     if (!fname || !email || !msg) {
       alert('Please fill in all required fields.');
       return;
     }
+
+    // ── GTM CONVERSION TRIGGER ──
+    // In GTM: New Trigger → Custom Event → Event Name = "contact_form_submit"
+    // Attach your Google Ads / GA4 conversion tag to that trigger
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event           : 'contact_form_submit',
+      contact_name    : fname,
+      contact_email   : email,
+      contact_subject : subject,
+      contact_message : msg
+    });
+
     document.getElementById('contact-form').style.display = 'none';
     document.getElementById('form-success').classList.add('show');
   }
+
   function resetForm() {
     document.getElementById('cf-fname').value = '';
     document.getElementById('cf-lname').value = '';
@@ -292,6 +296,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     document.getElementById('contact-form').style.display = 'block';
     document.getElementById('form-success').classList.remove('show');
   }
+
   function toggleFaq(el) {
     const item = el.closest('.faq-item');
     const isOpen = item.classList.contains('open');
@@ -299,5 +304,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     if (!isOpen) item.classList.add('open');
   }
 </script>
+
 </body>
 </html>
