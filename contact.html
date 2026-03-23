@@ -1,1 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MZFW5QNL');</script>
+<!-- End Google Tag Manager -->
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Contact – CricketHub</title>
+<link rel="stylesheet" href="style.css" />
+<style>
+.contact-layout {
+  max-width: 1100px; margin: 0 auto;
+  display: grid; grid-template-columns: 360px 1fr;
+  gap: 36px; padding: 52px 28px;
+  align-items: start;
+}
+.contact-info { display: flex; flex-direction: column; gap: 20px; }
+.info-card {
+  background: var(--white); border-radius: var(--radius);
+  box-shadow: var(--shadow); padding: 24px;
+  display: flex; gap: 18px; align-items: flex-start;
+  transition: transform .2s;
+}
+.info-card:hover { transform: translateY(-3px); }
+.info-icon {
+  font-size: 1.8rem;
+  background: linear-gradient(135deg, #e9f5ee, #c8e6d4);
+  border-radius: 12px; padding: 12px;
+  min-width: 54px; text-align: center;
+}
+.info-text h3 { font-size: 1rem; margin-bottom: 5px; }
+.info-text p, .info-text a { font-size: 0.9rem; color: var(--gray); line-height: 1.6; }
+.info-text a { color: var(--green); font-weight: 600; }
+.info-text a:hover { text-decoration: underline; }
+.map-card {
+  background: linear-gradient(135deg, #e9f5ee 0%, #c8e6d4 100%);
+  border-radius: var(--radius); box-shadow: var(--shadow);
+  padding: 32px; text-align: center;
+  min-height: 180px; display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+}
+.map-card span { font-size: 3rem; margin-bottom: 10px; }
+.map-card p { font-size: 0.9rem; color: var(--green-dark); font-weight: 600; }
+.contact-form-box {
+  background: var(--white); border-radius: var(--radius);
+  box-shadow: var(--shadow); padding: 36px;
+}
+.contact-form-box h2 { font-size: 1.5rem; margin-bottom: 6px; }
+.contact-form-box p { color: var(--gray); margin-bottom: 28px; font-size: 0.95rem; }
+.submit-btn {
+  width: 100%; padding: 15px;
+  background: var(--green); color: var(--white);
+  border: none; border-radius: 50px;
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.05rem; font-weight: 600; letter-spacing: .05em;
+  cursor: pointer; transition: background .2s, transform .15s;
+}
+.submit-btn:hover { background: var(--green-light); transform: translateY(-2px); }
+.form-success { display: none; text-align: center; padding: 40px 20px; }
+.form-success.show { display: block; }
+.form-success span { font-size: 3.5rem; display: block; margin-bottom: 14px; }
+.form-success h3 { font-size: 1.5rem; margin-bottom: 8px; color: var(--green); }
+.faq-section { max-width: 1100px; margin: 0 auto 60px; padding: 0 28px; }
+.faq-item {
+  background: var(--white); border-radius: var(--radius);
+  box-shadow: var(--shadow); margin-bottom: 12px; overflow: hidden;
+}
+.faq-q {
+  padding: 18px 24px; cursor: pointer;
+  font-weight: 700; font-size: 1rem;
+  display: flex; justify-content: space-between; align-items: center;
+  transition: background .15s;
+}
+.faq-q:hover { background: var(--off-white); }
+.faq-q .arrow { transition: transform .3s; color: var(--green); font-size: 1.2rem; }
+.faq-item.open .faq-q .arrow { transform: rotate(180deg); }
+.faq-a {
+  max-height: 0; overflow: hidden;
+  transition: max-height .35s ease, padding .3s;
+  padding: 0 24px; color: var(--gray); font-size: 0.93rem; line-height: 1.7;
+}
+.faq-item.open .faq-a { max-height: 200px; padding: 0 24px 18px; }
+@media(max-width:800px){
+  .contact-layout{grid-template-columns:1fr;padding:24px 16px;}
+}
+</style>
+</head>
+<body>
 
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MZFW5QNL"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<div class="ticker">
+  <span class="ticker-inner">
+    📞 Support: Mon–Sat, 9am–7pm &nbsp;|&nbsp; 📧 support@crickethub.in &nbsp;|&nbsp;
+    🚚 Free shipping on orders over ₹999
+  </span>
+</div>
+
+<nav>
+  <div class="nav-logo">🏏 Cricket<span>Hub</span></div>
+  <a href="index.html">Home</a>
+  <a href="products.html">Products</a>
+  <a href="contact.html">Contact</a>
+  <a href="cart.html" class="nav-cart">🛒 Cart <span class="cart-count">0</span></a>
+</nav>
+
+<div class="page-header">
+  <div class="breadcrumb"><a href="index.html">Home</a> / Contact</div>
+  <h1>Get in Touch</h1>
+  <p>We'd love to hear from you. Our team is ready to help.</p>
+</div>
+
+<div class="contact-layout">
+
+  <div class="contact-info">
+    <div class="info-card">
+      <div class="info-icon">📍</div>
+      <div class="info-text">
+        <h3>Store Location</h3>
+        <p>Cricket Hub Store,<br>Banjara Hills, Hyderabad,<br>Telangana – 500034</p>
+      </div>
+    </div>
+    <div class="info-card">
+      <div class="info-icon">📞</div>
+      <div class="info-text">
+        <h3>Phone Support</h3>
+        <a href="tel:+919876543210">+91 98765 43210</a>
+        <p>Mon–Sat, 9am – 7pm IST</p>
+      </div>
+    </div>
+    <div class="info-card">
+      <div class="info-icon">📧</div>
+      <div class="info-text">
+        <h3>Email Us</h3>
+        <a href="mailto:support@crickethub.in">support@crickethub.in</a>
+        <p>We reply within 24 hours</p>
+      </div>
+    </div>
+    <div class="info-card">
+      <div class="info-icon">🚚</div>
+      <div class="info-text">
+        <h3>Shipping</h3>
+        <p>Free delivery on orders above ₹999 across India. 3–5 business days estimated.</p>
+      </div>
+    </div>
+    <div class="map-card">
+      <span>🗺️</span>
+      <p>Banjara Hills, Hyderabad</p>
+      <p style="font-size:.8rem;color:var(--gray);margin-top:4px;">Telangana – 500034</p>
+    </div>
+  </div>
+
+  <div class="contact-form-box">
+    <h2>Send a Message</h2>
+    <p>Have a question? Fill out the form and our cricket experts will get back to you.</p>
+
+    <div id="contact-form">
+      <div class="form-row">
+        <div class="form-group"><label>First Name *</label><input type="text" id="cf-fname" placeholder="Rohit" /></div>
+        <div class="form-group"><label>Last Name *</label><input type="text" id="cf-lname" placeholder="Sharma" /></div>
+      </div>
+      <div class="form-group"><label>Email *</label><input type="email" id="cf-email" placeholder="you@example.com" /></div>
+      <div class="form-group">
+        <label>Subject</label>
+        <select id="cf-subject">
+          <option>Order Enquiry</option>
+          <option>Product Question</option>
+          <option>Return / Exchange</option>
+          <option>Shipping Issue</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Message *</label>
+        <textarea id="cf-message" rows="5" placeholder="Write your message here..."></textarea>
+      </div>
+      <button class="submit-btn" onclick="submitForm()">Send Message 🏏</button>
+    </div>
+
+    <div class="form-success" id="form-success">
+      <span>🎉</span>
+      <h3>Message Sent!</h3>
+      <p style="color:var(--gray);">Thanks for reaching out! We'll get back to you within 24 hours.</p>
+      <button onclick="resetForm()" class="btn btn-green" style="margin-top:20px;">Send Another Message</button>
+    </div>
+  </div>
+
+</div>
+
+<!-- FAQ -->
+<div class="faq-section">
+  <div class="section-title">
+    <h2>Frequently Asked Questions</h2>
+    <p>Quick answers to common questions</p>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">How long does delivery take? <span class="arrow">▾</span></div>
+    <div class="faq-a">Standard delivery takes 3–5 business days across India. Express delivery (1–2 days) is available for metro cities at an additional charge.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">What is the return policy? <span class="arrow">▾</span></div>
+    <div class="faq-a">We offer a 7-day easy return policy. Items must be unused, in original packaging, and returned with the invoice. Jerseys and customized items cannot be returned.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">Are the IPL jerseys official? <span class="arrow">▾</span></div>
+    <div class="faq-a">Yes! All IPL jerseys sold on CricketHub are official licensed products sourced directly from the BCCI and team merchandise partners.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">How do I use a promo code? <span class="arrow">▾</span></div>
+    <div class="faq-a">Add items to your cart and proceed to checkout. You'll find the promo code field in the Order Summary section. Enter your code and click "Apply" to see the discount.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">Do you ship internationally? <span class="arrow">▾</span></div>
+    <div class="faq-a">Currently we ship within India only. International shipping is coming soon for Australia, England, New Zealand, South Africa, and West Indies.</div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <h3>Cricket<span>Hub</span></h3>
+      <p>India's premier cricket equipment store. From leather balls to official IPL jerseys — we've got your game covered.</p>
+    </div>
+    <div>
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="cart.html">My Cart</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Categories</h4>
+      <ul>
+        <li><a href="products.html?cat=bats">Cricket Bats</a></li>
+        <li><a href="products.html?cat=balls">Cricket Balls</a></li>
+        <li><a href="products.html?cat=jerseys">IPL Jerseys</a></li>
+        <li><a href="products.html?cat=international">International</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Support</h4>
+      <ul>
+        <li><a href="contact.html">Shipping Policy</a></li>
+        <li><a href="contact.html">Return Policy</a></li>
+        <li><a href="contact.html">FAQ</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2026 CricketHub. All Rights Reserved. &nbsp;|&nbsp; 🔒 Secure Payments &nbsp;·&nbsp; 🚚 Pan-India Delivery</div>
+</footer>
+
+<script src="cart.js"></script>
+<script>
+  function submitForm() {
+    const fname   = document.getElementById('cf-fname').value.trim();
+    const email   = document.getElementById('cf-email').value.trim();
+    const msg     = document.getElementById('cf-message').value.trim();
+    const subject = document.getElementById('cf-subject').value;
+
+    if (!fname || !email || !msg) {
+      alert('Please fill in all required fields.');
+      return;
+    }
+
+    // ── GTM CONVERSION TRIGGER ──
+    // In GTM: New Trigger → Custom Event → Event Name = "contact_form_submit"
+    // Attach your Google Ads / GA4 conversion tag to that trigger
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event           : 'contact_form_submit',
+      contact_name    : fname,
+      contact_email   : email,
+      contact_subject : subject,
+      contact_message : msg
+    });
+
+    document.getElementById('contact-form').style.display = 'none';
+    document.getElementById('form-success').classList.add('show');
+  }
+
+  function resetForm() {
+    document.getElementById('cf-fname').value = '';
+    document.getElementById('cf-lname').value = '';
+    document.getElementById('cf-email').value = '';
+    document.getElementById('cf-message').value = '';
+    document.getElementById('contact-form').style.display = 'block';
+    document.getElementById('form-success').classList.remove('show');
+  }
+
+  function toggleFaq(el) {
+    const item = el.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+</script>
+
+</body>
+</html>
