@@ -1,132 +1,143 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-MZFW5QNL');</script>
-  <!-- End Google Tag Manager -->
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MZFW5QNL');</script>
+<!-- End Google Tag Manager -->
 
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Thank You – CricketHub</title>
-  <link rel="stylesheet" href="style.css" />
-  <style>
-    .ty-wrapper {
-      min-height: calc(100vh - var(--nav-h));
-      display: flex; align-items: center; justify-content: center;
-      padding: 52px 20px;
-      background: linear-gradient(160deg, #e9f5ee 0%, #f8f5f0 60%);
-    }
-    .ty-card {
-      background: var(--white);
-      border-radius: 24px;
-      box-shadow: 0 12px 56px rgba(0,0,0,0.12);
-      max-width: 580px; width: 100%;
-      overflow: hidden;
-      animation: slideUp .55s cubic-bezier(.22,1,.36,1);
-    }
-    @keyframes slideUp {
-      from { opacity: 0; transform: translateY(36px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    .ty-banner {
-      background: linear-gradient(135deg, #1a6b3c, #22913f);
-      padding: 40px 40px 32px;
-      text-align: center; color: var(--white);
-    }
-    .check-anim {
-      width: 80px; height: 80px;
-      background: rgba(255,255,255,0.18);
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 2.4rem;
-      margin: 0 auto 18px;
-      border: 3px solid rgba(255,255,255,0.4);
-    }
-    .ty-banner h1 { font-size: 2rem; margin-bottom: 6px; }
-    .ty-banner p  { font-size: 0.95rem; opacity: .85; }
-    .order-pill {
-      display: inline-block;
-      background: rgba(255,255,255,0.15);
-      border: 1.5px solid rgba(255,255,255,0.35);
-      border-radius: 50px;
-      padding: 6px 20px;
-      font-family: 'Oswald', sans-serif;
-      font-size: 1rem; letter-spacing: .06em;
-      margin-top: 14px;
-    }
-    .feedback-section { padding: 36px 40px 40px; }
-    .feedback-section h2 { font-size: 1.35rem; margin-bottom: 6px; color: var(--dark); }
-    .feedback-section > p { color: var(--gray); font-size: 0.92rem; margin-bottom: 28px; }
-    .star-row { margin-bottom: 22px; }
-    .star-row > label { display: block; font-weight: 700; font-size: 0.9rem; margin-bottom: 10px; }
-    .stars-input { display: flex; gap: 8px; flex-direction: row-reverse; justify-content: flex-end; }
-    .stars-input input { display: none; }
-    .stars-input label {
-      font-size: 2.2rem; cursor: pointer;
-      color: #d1d5db; transition: color .15s, transform .15s;
-      display: block; margin: 0;
-    }
-    .stars-input label:hover,
-    .stars-input label:hover ~ label,
-    .stars-input input:checked ~ label { color: var(--gold); transform: scale(1.15); }
-    .star-hint { font-size: 0.78rem; color: var(--gray); margin-top: 6px; min-height: 18px; }
-    .form-group label { font-weight: 700; font-size: 0.88rem; margin-bottom: 6px; display: block; color: var(--dark); }
-    .form-group input,
-    .form-group textarea,
-    .form-group select {
-      width: 100%; padding: 12px 16px;
-      border: 1.5px solid var(--gray-light); border-radius: 10px;
-      font-family: 'Nunito', sans-serif; font-size: 0.95rem;
-      transition: border-color .2s, box-shadow .2s; background: var(--white);
-    }
-    .form-group input:focus,
-    .form-group textarea:focus,
-    .form-group select:focus {
-      outline: none; border-color: var(--green);
-      box-shadow: 0 0 0 3px rgba(26,107,60,0.1);
-    }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-    .mood-row { margin-bottom: 22px; }
-    .mood-row > label { font-weight: 700; font-size: 0.88rem; margin-bottom: 10px; display: block; }
-    .mood-options { display: flex; gap: 10px; flex-wrap: wrap; }
-    .mood-btn {
-      border: 2px solid var(--gray-light); border-radius: 50px;
-      padding: 8px 16px; cursor: pointer; background: var(--white);
-      font-size: 0.88rem; font-weight: 600;
-      transition: border-color .18s, background .18s, transform .15s;
-    }
-    .mood-btn:hover { border-color: var(--green); transform: scale(1.04); }
-    .mood-btn.selected { border-color: var(--green); background: #e9f5ee; color: var(--green); }
-    .submit-btn {
-      width: 100%; padding: 15px;
-      background: var(--green); color: var(--white);
-      border: none; border-radius: 50px;
-      font-family: 'Oswald', sans-serif;
-      font-size: 1.05rem; font-weight: 600; letter-spacing: .05em;
-      cursor: pointer; margin-top: 8px;
-      transition: background .2s, transform .15s, box-shadow .2s;
-    }
-    .submit-btn:hover {
-      background: var(--green-light); transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(26,107,60,0.28);
-    }
-    .skip-link { display: block; text-align: center; margin-top: 14px; font-size: 0.85rem; color: var(--gray); }
-    .skip-link a { color: var(--green); font-weight: 600; }
-    .feedback-success { display: none; text-align: center; padding: 20px 0 10px; }
-    .feedback-success.show { display: block; }
-    .feedback-success .big-emoji { font-size: 4rem; margin-bottom: 14px; }
-    .feedback-success h3 { font-size: 1.5rem; color: var(--green); margin-bottom: 8px; }
-    .feedback-success p { color: var(--gray); font-size: 0.95rem; margin-bottom: 24px; }
-    @media(max-width:600px){
-      .ty-banner { padding: 32px 24px 26px; }
-      .feedback-section { padding: 28px 24px 32px; }
-      .form-row { grid-template-columns: 1fr; }
-    }
-  </style>
+<!-- GTM dataLayer purchase event — fires on page load -->
+<script>
+  const p        = new URLSearchParams(window.location.search);
+  const orderId  = p.get('order_id') || ('CH-' + Date.now().toString().slice(-8).toUpperCase());
+  const total    = p.get('total')    || '0';
+  const payment  = p.get('payment')  || '';
+  const items    = p.get('items')    || '';
+
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({
+    event        : 'purchase',
+    order_id     : orderId,
+    order_total  : total,
+    currency     : 'INR',
+    payment_type : payment,
+    items        : items
+  });
+</script>
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Thank You – CricketHub</title>
+<link rel="stylesheet" href="style.css" />
+<style>
+  .ty-wrapper {
+    min-height: calc(100vh - var(--nav-h));
+    display: flex; align-items: center; justify-content: center;
+    padding: 52px 20px;
+    background: linear-gradient(160deg, #e9f5ee 0%, #f8f5f0 60%);
+  }
+  .ty-card {
+    background: var(--white); border-radius: 24px;
+    box-shadow: 0 12px 56px rgba(0,0,0,0.12);
+    max-width: 580px; width: 100%; overflow: hidden;
+    animation: slideUp .55s cubic-bezier(.22,1,.36,1);
+  }
+  @keyframes slideUp {
+    from { opacity:0; transform:translateY(36px); }
+    to   { opacity:1; transform:translateY(0); }
+  }
+  .ty-banner {
+    background: linear-gradient(135deg, #1a6b3c, #22913f);
+    padding: 40px 40px 32px; text-align: center; color: var(--white);
+  }
+  .check-circle {
+    width: 80px; height: 80px;
+    background: rgba(255,255,255,0.18); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 2.4rem; margin: 0 auto 18px;
+    border: 3px solid rgba(255,255,255,0.4);
+  }
+  .ty-banner h1 { font-size: 2rem; margin-bottom: 6px; }
+  .ty-banner p  { font-size: 0.95rem; opacity:.85; }
+  .order-pill {
+    display: inline-block;
+    background: rgba(255,255,255,0.15);
+    border: 1.5px solid rgba(255,255,255,0.35);
+    border-radius: 50px; padding: 6px 20px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1rem; letter-spacing:.06em; margin-top: 14px;
+  }
+  .feedback-section { padding: 36px 40px 40px; }
+  .feedback-section h2 { font-size: 1.35rem; margin-bottom: 6px; }
+  .feedback-section > p { color:var(--gray); font-size:.92rem; margin-bottom:28px; }
+  .star-row { margin-bottom:22px; }
+  .star-row > label { display:block; font-weight:700; font-size:.9rem; margin-bottom:10px; }
+  .stars-input { display:flex; gap:8px; flex-direction:row-reverse; justify-content:flex-end; }
+  .stars-input input { display:none; }
+  .stars-input label {
+    font-size:2.2rem; cursor:pointer; color:#d1d5db;
+    transition:color .15s, transform .15s; display:block; margin:0;
+  }
+  .stars-input label:hover,
+  .stars-input label:hover ~ label,
+  .stars-input input:checked ~ label { color:var(--gold); transform:scale(1.15); }
+  .star-hint { font-size:.78rem; color:var(--gray); margin-top:6px; min-height:18px; }
+  .mood-row { margin-bottom:22px; }
+  .mood-row > label { font-weight:700; font-size:.88rem; margin-bottom:10px; display:block; }
+  .mood-options { display:flex; gap:10px; flex-wrap:wrap; }
+  .mood-btn {
+    border:2px solid var(--gray-light); border-radius:50px;
+    padding:8px 16px; cursor:pointer; background:var(--white);
+    font-size:.88rem; font-weight:600;
+    transition:border-color .18s, background .18s, transform .15s;
+  }
+  .mood-btn:hover { border-color:var(--green); transform:scale(1.04); }
+  .mood-btn.selected { border-color:var(--green); background:#e9f5ee; color:var(--green); }
+  .form-group label { font-weight:700; font-size:.88rem; margin-bottom:6px; display:block; color:var(--dark); }
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    width:100%; padding:12px 16px;
+    border:1.5px solid var(--gray-light); border-radius:10px;
+    font-family:'Nunito',sans-serif; font-size:.95rem;
+    transition:border-color .2s, box-shadow .2s; background:var(--white);
+  }
+  .form-group input:focus,
+  .form-group textarea:focus,
+  .form-group select:focus {
+    outline:none; border-color:var(--green);
+    box-shadow:0 0 0 3px rgba(26,107,60,0.1);
+  }
+  .form-row { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  .submit-btn {
+    width:100%; padding:15px;
+    background:var(--green); color:var(--white);
+    border:none; border-radius:50px;
+    font-family:'Oswald',sans-serif;
+    font-size:1.05rem; font-weight:600; letter-spacing:.05em;
+    cursor:pointer; margin-top:8px;
+    transition:background .2s, transform .15s, box-shadow .2s;
+  }
+  .submit-btn:hover {
+    background:var(--green-light); transform:translateY(-2px);
+    box-shadow:0 6px 20px rgba(26,107,60,0.28);
+  }
+  .skip-link { display:block; text-align:center; margin-top:14px; font-size:.85rem; color:var(--gray); }
+  .skip-link a { color:var(--green); font-weight:600; }
+  .feedback-success { display:none; text-align:center; padding:20px 0 10px; }
+  .feedback-success.show { display:block; }
+  .feedback-success .big-emoji { font-size:4rem; margin-bottom:14px; }
+  .feedback-success h3 { font-size:1.5rem; color:var(--green); margin-bottom:8px; }
+  .feedback-success p { color:var(--gray); font-size:.95rem; margin-bottom:24px; }
+  @media(max-width:600px){
+    .ty-banner { padding:32px 24px 26px; }
+    .feedback-section { padding:28px 24px 32px; }
+    .form-row { grid-template-columns:1fr; }
+  }
+</style>
 </head>
 <body>
 
@@ -134,26 +145,6 @@
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MZFW5QNL"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
-
-<!-- GTM dataLayer — fires immediately on page load -->
-<!-- In GTM: create a Custom Event trigger with event name = "purchase" -->
-<script>
-  const urlParams  = new URLSearchParams(window.location.search);
-  const orderId    = urlParams.get('order_id') || urlParams.get('order') || ('CH-' + Date.now().toString().slice(-8).toUpperCase());
-  const orderTotal = urlParams.get('total')    || '0';
-  const payMethod  = urlParams.get('pay')      || urlParams.get('payment') || '';
-  const orderItems = urlParams.get('items')    || '';
-
-  window.dataLayer = window.dataLayer || [];
-  window.dataLayer.push({
-    event: 'purchase',
-    order_id:     orderId,
-    order_total:  orderTotal,
-    currency:     'INR',
-    payment_type: payMethod,
-    items:        orderItems
-  });
-</script>
 
 <nav>
   <div class="nav-logo">🏏 Cricket<span>Hub</span></div>
@@ -167,7 +158,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="ty-card">
 
     <div class="ty-banner">
-      <div class="check-anim">✅</div>
+      <div class="check-circle">✅</div>
       <h1>Order Confirmed!</h1>
       <p>Your payment was successful. We're packing your order right now.</p>
       <div class="order-pill" id="order-id-display">Loading...</div>
@@ -175,7 +166,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <div class="feedback-section">
       <h2>How was your experience? 🏏</h2>
-      <p>Takes just 30 seconds — your feedback helps us serve you better!</p>
+      <p>Takes 30 seconds — your feedback helps us serve you better!</p>
 
       <div id="feedback-form">
 
@@ -272,19 +263,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <script src="cart.js"></script>
 <script>
-  // Show order ID in banner
   document.getElementById('order-id-display').textContent = 'Order ID: ' + orderId;
 
   const hints = {
-    1: "😞 We're sorry to hear that",
-    2: "😕 We'll try to do better",
-    3: "😐 Thanks for the feedback",
-    4: "😊 Glad you liked it!",
-    5: "🤩 Awesome! You made our day!"
+    1:"😞 We're sorry to hear that",
+    2:"😕 We'll try to do better",
+    3:"😐 Thanks for the feedback",
+    4:"😊 Glad you liked it!",
+    5:"🤩 Awesome! You made our day!"
   };
-  function setHint(n) {
-    document.getElementById('star-hint').textContent = hints[n];
-  }
+  function setHint(n) { document.getElementById('star-hint').textContent = hints[n]; }
 
   function selectMood(el) {
     document.querySelectorAll('.mood-btn').forEach(b => b.classList.remove('selected'));
@@ -292,32 +280,31 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   }
 
   function submitFeedback() {
-    const name   = document.getElementById('fb-name').value.trim();
-    const phone  = document.getElementById('fb-phone').value.trim();
-    const msg    = document.getElementById('fb-message').value.trim();
-    const rating = document.querySelector('input[name="rating"]:checked');
-    const mood   = document.querySelector('.mood-btn.selected');
-    const email  = document.getElementById('fb-email').value.trim();
-    const product= document.getElementById('fb-product').value;
+    const name    = document.getElementById('fb-name').value.trim();
+    const phone   = document.getElementById('fb-phone').value.trim();
+    const msg     = document.getElementById('fb-message').value.trim();
+    const rating  = document.querySelector('input[name="rating"]:checked');
+    const mood    = document.querySelector('.mood-btn.selected');
+    const email   = document.getElementById('fb-email').value.trim();
+    const product = document.getElementById('fb-product').value;
 
     if (!name)   { highlight('fb-name');    return; }
     if (!phone)  { highlight('fb-phone');   return; }
     if (!msg)    { highlight('fb-message'); return; }
     if (!rating) { alert('Please give a star rating!'); return; }
 
-    // GTM dataLayer push for feedback — fires when user submits
-    // In GTM: create a Custom Event trigger with event name = "feedback_submitted"
+    // GTM dataLayer push for feedback — create trigger: Custom Event = "feedback_submitted"
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({
-      event:            'feedback_submitted',
-      feedback_order_id: orderId,
-      feedback_name:     name,
-      feedback_phone:    phone,
-      feedback_email:    email,
-      feedback_rating:   rating.value,
-      feedback_mood:     mood ? mood.textContent.trim() : '',
-      feedback_product:  product,
-      feedback_message:  msg
+      event             : 'feedback_submitted',
+      feedback_order_id : orderId,
+      feedback_name     : name,
+      feedback_phone    : phone,
+      feedback_email    : email,
+      feedback_rating   : rating.value,
+      feedback_mood     : mood ? mood.textContent.trim() : '',
+      feedback_product  : product,
+      feedback_message  : msg
     });
 
     document.getElementById('feedback-form').style.display = 'none';
@@ -331,6 +318,5 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     setTimeout(() => el.style.borderColor = '', 2000);
   }
 </script>
-
 </body>
 </html>
